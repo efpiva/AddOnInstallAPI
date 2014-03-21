@@ -21,29 +21,29 @@ namespace AddOnInstallAPI
         
         static void Main(string[] args)
         {
-            if (args.Length != 2)
+            if (args.Length == 0 || (args.Length == 1 && args[0] == "-s"))
             {
                 Console.WriteLine("Syntax error.");
-                Console.WriteLine(String.Format("Call {0} -i to notify install", args[0]));
-                Console.WriteLine(String.Format("Call {0} -s Folder to change addon folder", args[1]));
-                Console.WriteLine(String.Format("Call {0} -r to set restart needed", args[1]));
+                Console.WriteLine("Call AddOnInstallAPI.exe -i to notify install");
+                Console.WriteLine("Call AddOnInstallAPI.exe -s Folder to change addon folder");
+                Console.WriteLine("Call AddOnInstallAPI.exe -r to set restart needed");
 
                 Environment.Exit(2);
             }
 
-            if (args[1] == "-i")
+            if (args[0] == "-i")
             {
                 EndInstallEx();
                 Environment.Exit(0);
             }
 
-            if (args[1] == "-s")
+            if (args[0] == "-s")
             {
-                SetAddOnFolder(args[2]);
+                SetAddOnFolder(args[1]);
                 Environment.Exit(0);
             }
 
-            if (args[1] == "-r")
+            if (args[0] == "-r")
             {
                 RestartNeeded();
                 Environment.Exit(0);
