@@ -30,7 +30,7 @@ namespace AddOnInstallAPI
     class Program
     {
         [DllImport("C:\\Program Files\\SAP\\SAP Business One\\AddOnInstallAPI_x64.dll")]
-        public static extern int EndInstallEx();
+        public static extern int EndInstallEx(string info, bool installSuccess);
 
         [DllImport("C:\\Program Files\\SAP\\SAP Business One\\AddOnInstallAPI_x64.dll")]
         public static extern int SetAddOnFolder(string srcPath);
@@ -53,7 +53,7 @@ namespace AddOnInstallAPI
 
             if (args[0] == "-i")
             {
-                EndInstallEx();
+                EndInstallEx("Dover", true);
                 Environment.Exit(0);
             }
 
